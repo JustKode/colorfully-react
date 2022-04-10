@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  mongodb:
+    env_file: "./.env"
+    image: mongo:latest
+    container_name: mongodb
+    restart: on-failure
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb:/data/db
+  backend:
+    env_file: "./.env"
+    build: ./backend
+    working_dir: /backend
+    restart: on-failure
+    depends_on:
+      - mongodb
+    command: bash -c "pip install -r requirements.txt && gunicorn --bind 0.0.0.0:8000 app:app"
+    volumes:
+      - ./backend:/backend  # maps host diretory to internal container directory
+    ports:
+      - 8000:8000
+  frontend:
+    env_file: "./.env"
+    build: ./frontend
+    working_dir: /frontend
+    command: bash -c "yarn install && yarn build && yarn global add serve && serve -s build"
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 3000:3000
