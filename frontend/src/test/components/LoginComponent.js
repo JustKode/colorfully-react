@@ -76,7 +76,7 @@ function LoginComponent() {
           <StyledInput name="email" placeholder="이메일을 입력하세요" />
           <StyledInput name="password" placeholder="비밀번호를 입력하세요" />
         </form>
-        <CustomLink to="/main">
+        <CustomLink to="/test/main">
           <LoginButton>로그인</LoginButton>
         </CustomLink>
         <RegisterButton>회원가입</RegisterButton>
