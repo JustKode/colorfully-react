@@ -1,9 +1,11 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import LonginPage from './pages/LoginPage';
 
 function App() {
   return (
     <div>
-      <p>color test</p>
+      <Route component={LonginPage} path="/" exact />
     </div>
   );
 }
