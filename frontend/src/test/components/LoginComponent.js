@@ -1,6 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { group1State, group2State, group3State, group4State, group5State } from '../../recoil';
 
 const LoginBlock = styled.div`
   position: absolute;
@@ -68,15 +70,23 @@ const RegisterButton = styled(Button)`
 `;
 
 function LoginComponent() {
+  const [group1] = useRecoilState(group1State);
+  const [group2] = useRecoilState(group2State);
+  const [group3] = useRecoilState(group3State);
+  const [group4] = useRecoilState(group4State);
+  const [group5] = useRecoilState(group5State);
+
   return (
     <LoginBlock>
       <FormBox>
-        <div className="login-title">테스트 화면</div>
+        <div className="login-title" style={{ ...group1 }}>
+          테스트 화면
+        </div>
         <form>
           <StyledInput name="email" placeholder="이메일을 입력하세요" />
           <StyledInput name="password" placeholder="비밀번호를 입력하세요" />
         </form>
-        <CustomLink to="/main">
+        <CustomLink to="/test/main">
           <LoginButton>로그인</LoginButton>
         </CustomLink>
         <RegisterButton>회원가입</RegisterButton>

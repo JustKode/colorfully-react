@@ -1,14 +1,12 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import LonginPage from './pages/LoginPage';
-import MainPage from './pages/MainPage';
+import { RecoilRoot } from 'recoil';
+import MainRouter from './mainRouter';
 
 function App() {
   return (
-    <div>
-      <Route component={LonginPage} path="/" exact />
-      <Route component={MainPage} path="/main" />
-    </div>
+    <RecoilRoot>
+      <MainRouter />
+    </RecoilRoot>
   );
 }
 
