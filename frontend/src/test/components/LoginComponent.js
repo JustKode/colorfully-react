@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { useRecoilState } from 'recoil';
-import { group1State } from '../../recoil';
+import { group1State, group2State, group3State, group4State, group5State } from '../../recoil';
 
 const LoginBlock = styled.div`
   position: absolute;
@@ -70,11 +70,12 @@ const RegisterButton = styled(Button)`
 `;
 
 function LoginComponent() {
-  const [group1, setGroup1] = useRecoilState(group1State);
-  useEffect(() => {
-    console.log(group1);
-    setGroup1({ color: 'red', font: 'sans-serif' });
-  }, []);
+  const [group1] = useRecoilState(group1State);
+  const [group2] = useRecoilState(group2State);
+  const [group3] = useRecoilState(group3State);
+  const [group4] = useRecoilState(group4State);
+  const [group5] = useRecoilState(group5State);
+
   return (
     <LoginBlock>
       <FormBox>
