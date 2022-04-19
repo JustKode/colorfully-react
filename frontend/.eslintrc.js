@@ -8,5 +8,6 @@ module.exports = {
       'error',
       { devDependencies: false, optionalDependencies: false, peerDependencies: false },
     ],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
 };
