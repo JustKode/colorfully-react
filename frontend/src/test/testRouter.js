@@ -3,36 +3,36 @@ import { useRecoilState } from 'recoil';
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
-import { group1State, group2State, group3State, group4State, group5State } from '../recoil';
+import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../recoil';
 
 export default function TestRouter() {
-  const [group1, setGroup1] = useRecoilState(group1State);
-  const [group2, setGroup2] = useRecoilState(group2State);
-  const [group3, setGroup3] = useRecoilState(group3State);
-  const [group4, setGroup4] = useRecoilState(group4State);
-  const [group5, setGroup5] = useRecoilState(group5State);
+  const [mainBackGroup, setMainBackGroup] = useRecoilState(mainBackGroupState);
+  const [subBackGroup, setSubBackGroup] = useRecoilState(subBackGroupState);
+  const [mainGroup, setMainGroup] = useRecoilState(mainGroupState);
+  const [subGroup, setSubGroup] = useRecoilState(subGroupState);
+  const [pointGroup, setPointGroup] = useRecoilState(pointGroupState);
   useEffect(() => {
-    setGroup1({
+    setMainBackGroup({
       color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       font: 'sans-serif',
     });
-    setGroup2({
+    setSubBackGroup({
       color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       font: 'sans-serif',
     });
-    setGroup3({
+    setMainGroup({
       color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       font: 'sans-serif',
     });
-    setGroup4({
+    setSubGroup({
       color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       font: 'sans-serif',
     });
-    setGroup5({
+    setPointGroup({
       color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
       font: 'sans-serif',
