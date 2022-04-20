@@ -1,24 +1,24 @@
 // recoil 페이지
 import { atom } from 'recoil';
 
-export const group1State = atom({
-  key: 'group1',
+export const mainBackGroupState = atom({
+  key: 'mainBackGroup',
   default: { color: '', backgroundColor: '', font: '' },
 });
-export const group2State = atom({
-  key: 'group2',
+export const subBackGroupState = atom({
+  key: 'subBackGroup',
   default: { color: '', backgroundColor: '', font: '' },
 });
-export const group3State = atom({
-  key: 'group3',
+export const mainGroupState = atom({
+  key: 'mainGroup',
   default: { color: '', backgroundColor: '', font: '' },
 });
-export const group4State = atom({
-  key: 'group4',
+export const subGroupState = atom({
+  key: 'subGroup',
   default: { color: '', backgroundColor: '', font: '' },
 });
-export const group5State = atom({
-  key: 'group5',
+export const pointGroupState = atom({
+  key: 'pointGroup',
   default: { color: '', backgroundColor: '', font: '' },
 });
 

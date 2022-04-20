@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { group1State, group2State, group3State, group4State, group5State } from '../../recoil';
+import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
 
 const LoginBlock = styled.div`
   position: absolute;
@@ -10,7 +10,7 @@ const LoginBlock = styled.div`
   top: 0;
   bottom: 0;
   right: 0;
-  background-color: rgb(199, 222, 230);
+  background-color: rgb(140, 166, 178);
 
   display: flex;
   flex-direction: column;
@@ -61,35 +61,33 @@ const Button = styled.div`
 `;
 
 const LoginButton = styled(Button)`
-  background-color: rgb(56, 124, 146);
+  background-color: rgb(245, 227, 212);
 `;
 
 const RegisterButton = styled(Button)`
   margin-top: 0.5rem;
-  background-color: rgb(120, 179, 199);
+  background-color: rgb(210, 221, 222);
 `;
 
 function LoginComponent() {
-  const [group1] = useRecoilState(group1State);
-  const [group2] = useRecoilState(group2State);
-  const [group3] = useRecoilState(group3State);
-  const [group4] = useRecoilState(group4State);
-  const [group5] = useRecoilState(group5State);
+  const [mainBackGroup] = useRecoilState(mainBackGroupState);
+  const [subBackGroup] = useRecoilState(subBackGroupState);
+  const [mainGroup] = useRecoilState(mainGroupState);
+  const [subGroup] = useRecoilState(subGroupState);
+  const [pointGroup] = useRecoilState(pointGroupState);
 
   return (
-    <LoginBlock>
-      <FormBox>
-        <div className="login-title" style={{ ...group1 }}>
-          테스트 화면
-        </div>
+    <LoginBlock style={{ ...mainBackGroup }}>
+      <FormBox style={{ ...subBackGroup }}>
+        <div className="login-title">테스트 화면</div>
         <form>
           <StyledInput name="email" placeholder="이메일을 입력하세요" />
           <StyledInput name="password" placeholder="비밀번호를 입력하세요" />
         </form>
         <CustomLink to="/test/main">
-          <LoginButton>로그인</LoginButton>
+          <LoginButton style={{ ...mainGroup }}>로그인</LoginButton>
         </CustomLink>
-        <RegisterButton>회원가입</RegisterButton>
+        <RegisterButton style={{ ...mainGroup }}>회원가입</RegisterButton>
       </FormBox>
     </LoginBlock>
   );
