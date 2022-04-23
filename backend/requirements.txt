@@ -14,6 +14,7 @@ itsdangerous==2.1.2
 Jinja2==3.1.1
 jsonschema==4.4.0
 MarkupSafe==2.1.1
+pymongo==4.1.1
 pyrsistent==0.18.1
 pytz==2022.1
 requests==2.27.1
