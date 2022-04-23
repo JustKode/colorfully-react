@@ -11,5 +11,5 @@ db.createUser({
     db: '$MONGO_INITDB_DATABASE'
   }]
 });
-db.createCollection('dc_schema');
+db.createCollection('db_schema');
 EOF
