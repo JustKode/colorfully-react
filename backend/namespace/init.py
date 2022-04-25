@@ -11,8 +11,7 @@ Init = Namespace(
 )
 
 init_fields = Init.model('Initialize Schema', {
-    'adjective': fields.String(description="형용사", required=True, example="warm", enum=list(enum_util.get_adjectives())),
-    'schema': fields.List(fields.String(enum=list(enum_util.get_color_type_dict())))
+    'adjective_pair': fields.String(description="형용사 쌍", required=True, example="warm-cool", enum=list(enum_util.get_adjective_pairs()))
 })
 
 @Init.route('/register')
@@ -20,6 +19,6 @@ class Register(Resource):
     @Init.expect(init_fields)
     @Init.doc(responses={201: "스키마 생성 성공"})
     def post(self):
+        """스키마를 생성 합니다."""
         result = set_schema(request.json)
-        print(result)
         return result
