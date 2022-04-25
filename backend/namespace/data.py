@@ -31,7 +31,8 @@ class Color(Resource):
         if schema is None:
             return {"message": "page not found"}, 404
         
-        schema = schema['adjective']
+        schema = schema['adjective_pair']
+        schema = choice(schema.split('-'))
         color_list = enum_util.get_colors_by_adjective(schema)
 
         if color_list is None:

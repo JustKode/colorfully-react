@@ -11,7 +11,7 @@ Init = Namespace(
 )
 
 init_fields = Init.model('Initialize Schema', {
-    'adjective': fields.String(description="형용사", required=True, example="warm", enum=list(enum_util.get_adjectives()))
+    'adjective_pair': fields.String(description="형용사 쌍", required=True, example="warm-cool", enum=list(enum_util.get_adjective_pairs()))
 })
 
 @Init.route('/register')
