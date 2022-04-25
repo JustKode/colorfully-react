@@ -20,6 +20,6 @@ class Register(Resource):
     @Init.expect(init_fields)
     @Init.doc(responses={201: "스키마 생성 성공"})
     def post(self):
+        """스키마를 생성 합니다."""
         result = set_schema(request.json)
-        print(result)
         return result
