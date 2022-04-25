@@ -12,4 +12,5 @@ db.createUser({
   }]
 });
 db.createCollection('db_schema');
+db.createCollection('train_data');
 EOF
