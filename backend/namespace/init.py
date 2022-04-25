@@ -21,4 +21,4 @@ class Register(Resource):
     def post(self):
         """스키마를 생성 합니다."""
         result = set_schema(request.json)
-        return result
+        return result, 201
