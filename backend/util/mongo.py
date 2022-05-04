@@ -17,3 +17,8 @@ def set_schema(json):
 def get_schema(page_id):
     db = connection.get_default_database()
     return db.get_collection('db_schema').find_one(objectid.ObjectId(page_id))
+
+def post_data(json):
+    db = connection.get_default_database()
+    db.get_collection('train_data').insert_one(json)
+    return

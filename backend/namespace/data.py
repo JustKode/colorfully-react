@@ -2,7 +2,7 @@ from flask import request
 from flask_restx import Resource, Namespace, fields
 from json import dumps
 from requests import post
-from util.mongo import set_schema, get_schema
+from util.mongo import get_schema, post_data
 from util.enum import EnumUtil
 from random import randint, choice
 
@@ -18,6 +18,12 @@ color_data_fields = Data.model('Random Color Data', {
     "mainGroup": fields.String(description="메인색", example="#123456"),
     "subGroup": fields.String(description="보조색", example="#123456"),
     "point": fields.String(description="강조색", example="#123456")
+})
+
+input_data_fields = Data.model('학습 데이터 모델', {
+    "input_data": fields.Nested(color_data_fields),
+    "target_data_1": fields.Float(description="첫 번째 형용사에 대한 점수"),
+    "target_data_2": fields.Float(description="두 번째 형용사에 대한 점수")
 })
 
 @Data.route('/<string:page_id>')
@@ -61,3 +67,21 @@ class Color(Resource):
         }
 
         return result
+    
+
+
+    @Data.response(201, "생성 성공")
+    @Data.response(404, "아이디 조회 실패")
+    @Data.expect(input_data_fields)
+    def post(self, page_id):
+        schema = get_schema(page_id)
+
+        if schema is None:
+            return {"message": "page not found"}, 404
+        
+        data = request.json
+        data['id'] = page_id
+
+        post_data(data)
+
+        return {"message": "success"}, 201
