@@ -5,10 +5,6 @@ export const mainBackGroupState = atom({
   key: 'mainBackGroup',
   default: { color: '', backgroundColor: '', font: '' },
 });
-export const subBackGroupState = atom({
-  key: 'subBackGroup',
-  default: { color: '', backgroundColor: '', font: '' },
-});
 export const mainGroupState = atom({
   key: 'mainGroup',
   default: { color: '', backgroundColor: '', font: '' },

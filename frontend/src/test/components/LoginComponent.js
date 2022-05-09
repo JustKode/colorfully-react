@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
+import { mainBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
 
 const LoginBlock = styled.div`
   position: absolute;
@@ -71,14 +71,13 @@ const RegisterButton = styled(Button)`
 
 function LoginComponent() {
   const [mainBackGroup] = useRecoilState(mainBackGroupState);
-  const [subBackGroup] = useRecoilState(subBackGroupState);
   const [mainGroup] = useRecoilState(mainGroupState);
   const [subGroup] = useRecoilState(subGroupState);
   const [pointGroup] = useRecoilState(pointGroupState);
 
   return (
     <LoginBlock style={{ ...mainBackGroup }}>
-      <FormBox style={{ ...subBackGroup }}>
+      <FormBox style={{ ...mainBackGroup }}>
         <div className="login-title">테스트 화면</div>
         <form>
           <StyledInput name="email" placeholder="이메일을 입력하세요" />
