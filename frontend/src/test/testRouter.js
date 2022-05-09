@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { Route, Routes } from 'react-router-dom';
+import BasicLayout from '../common/layout/BasicLayout';
 import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../recoil';
@@ -41,8 +42,10 @@ export default function TestRouter() {
 
   return (
     <Routes>
-      <Route path="/test" element={<LoginPage />} />
-      <Route path="/test/main" element={<MainPage />} />
+      <Route element={<BasicLayout />}>
+        <Route path="/test" element={<LoginPage />} />
+        <Route path="/test/main" element={<MainPage />} />
+      </Route>
     </Routes>
   );
 }
