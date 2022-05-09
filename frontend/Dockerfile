@@ -4,7 +4,7 @@ RUN mkdir /frontend
 WORKDIR /frontend
 
 ADD package*.json /frontend/
-RUN yarn install
+RUN yarn install --production=true
 ADD . /frontend/
 
 EXPOSE 3000
