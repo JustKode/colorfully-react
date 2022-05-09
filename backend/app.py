@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_restx import Api
-from namespace.init import Init
 from namespace.data import Data
 from namespace.train import Train
 
@@ -18,7 +17,6 @@ api = Api(
     license="MIT"
 )
 
-api.add_namespace(Init, '/init')
 api.add_namespace(Data, '/data')
 api.add_namespace(Train, '/train')
 

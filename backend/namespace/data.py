@@ -1,8 +1,8 @@
 from flask import request
 from flask_restx import Resource, Namespace, fields
-from json import dumps
+from json import dumps, loads
 from requests import post
-from util.mongo import get_schema, post_data
+from util.mongo import post_data
 from util.enum import EnumUtil
 from random import randint, choice
 
@@ -25,19 +25,20 @@ input_data["input_data"] = fields.Nested(color_data_fields)
 
 input_data_fields = Data.model('학습 데이터 모델', input_data)
 
-@Data.route('/<string:page_id>')
-@Data.doc(params={'page_id': 'Page Initialize시 반환 받은 ID 입니다.'})
+@Data.route('/<string:group_id>')
+@Data.doc(params={'group_id': 'group_adjective.json에 명시한 Group ID 입니다.'})
 class Color(Resource):
     @Data.response(200, "반환 성공", color_data_fields)
     @Data.response(404, "아이디 조회 실패")
-    def get(self, page_id):
+    def get(self, group_id):
         """랜덤 색상을 가져 옵니다."""
-        schema = get_schema(page_id)
+        with open('./group_adjective.json', 'r') as f:
+            groups = loads(f.read())
 
-        if schema is None:
-            return {"message": "page not found"}, 404
+        if group_id not in groups:
+            return {"message": "group not found"}, 404
         
-        schema = schema['adjective_pair']
+        schema = groups[group_id]
         schema = choice(schema.split('-'))
         color_list = enum_util.get_colors_by_adjective(schema)
 
@@ -69,19 +70,19 @@ class Color(Resource):
         return result
     
 
-
     @Data.response(201, "생성 성공")
     @Data.response(404, "아이디 조회 실패")
     @Data.expect(input_data_fields)
-    def post(self, page_id):
+    def post(self, group_id):
         """색상 정보와 유저 응답 정보를 응답합니다."""
-        schema = get_schema(page_id)
+        with open('./group_adjective.json', 'r') as f:
+            groups = loads(f.read())
 
-        if schema is None:
-            return {"message": "page not found"}, 404
+        if group_id not in groups:
+            return {"message": "group not found"}, 404
         
         data = request.json
-        data['id'] = page_id
+        data['group'] = group_id
 
         post_data(data)
 
