@@ -2,7 +2,7 @@ from pymongo import mongo_client
 from bson import BSON, objectid
 import os
 
-host = os.getenv("HOST", "localhost")
+host = os.getenv("HOST", "mongodb")
 username = os.getenv("MONGO_INITDB_ROOT_USERNAME", "root")
 password = os.getenv("MONGO_INITDB_ROOT_PASSWORD", "colorfully!!")
 database = os.getenv("MONGO_INITDB_DATABASE", "colorfully")
