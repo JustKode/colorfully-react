@@ -17,11 +17,11 @@ color_data_fields = Data.model('Random Color Data', {
     "mainBackGroup": fields.List(fields.Integer, description="배경색 RGB", example=[123, 123, 123]),
     "mainGroup": fields.List(fields.Integer, description="메인색 RGB", example=[123, 123, 123]),
     "subGroup": fields.List(fields.Integer, description="보조색 RGB", example=[123, 123, 123]),
-    "point": fields.List(fields.Integer, description="강조색 RGB", example=[123, 123, 123])
+    "pointGroup": fields.List(fields.Integer, description="강조색 RGB", example=[123, 123, 123])
 })
 
 input_data = {key: fields.Float(description="-1.0 ~ 1.0의 유저 응답 점수 입력", example=0.0) for key in enum_util.get_adjective_pairs()}
-input_data["input_data"] = fields.Nested(color_data_fields)
+input_data["inputData"] = fields.Nested(color_data_fields)
 
 input_data_fields = Data.model('학습 데이터 모델', input_data)
 
@@ -64,7 +64,7 @@ class Color(Resource):
             "mainBackGroup": response[0],
             "mainGroup": response[2],
             "subGroup": response[1],
-            "point": response[4]
+            "pointGroup": response[4]
         }
 
         return result

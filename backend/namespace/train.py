@@ -29,8 +29,8 @@ class TrainPage(Resource):
             return {"message": "group not found"}, 404
         else:
             return {key: [{
-                        "mainBackGroup": "#123456",
-                        "mainGroup": "#123456",
-                        "subGroup": "#123456",
-                        "point": "#123456"
+                        "mainBackGroup": [123, 123, 123],
+                        "mainGroup": [123, 123, 123],
+                        "subGroup": [123, 123, 123],
+                        "pointGroup": [123, 123, 123]
                     } for _ in range(3)] for key in enum_util.get_adjectives()}
