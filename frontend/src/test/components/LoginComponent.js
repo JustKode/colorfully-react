@@ -1,10 +1,11 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import CRgroupState from '../../recoil';
 import BasicStyled from 'styled-components';
 import { Button, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { mainBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
 
 const LoginBlock = BasicStyled.div`
   position: absolute;
@@ -76,23 +77,22 @@ const RegisterButton = styled(StyledButton)`
 `;
 
 function LoginComponent() {
-  const [mainBackGroup] = useRecoilState(mainBackGroupState);
-  const [mainGroup] = useRecoilState(mainGroupState);
-  const [subGroup] = useRecoilState(subGroupState);
-  const [pointGroup] = useRecoilState(pointGroupState);
+  const [group] = useRecoilState(CRgroupState);
 
   return (
-    <LoginBlock style={{ ...mainBackGroup }}>
-      <FormBox style={{ ...mainBackGroup }}>
-        <div className="login-title">테스트 화면</div>
+    <LoginBlock style={{ ...group.mainBackGroup }}>
+      <FormBox style={{ ...group.mainBackGroup }}>
+        <div className="login-title" style={{ ...group.mainGroup }}>
+          테스트 화면
+        </div>
         <form>
           <StyledTextfield fullWidth margin="dense" id="username" label="username" variant="filled" />
           <StyledTextfield fullWidth margin="dense" id="email" label="email" variant="filled" />
         </form>
         <CustomLink to="/test/main">
-          <LoginButton style={{ ...mainGroup }}>로그인</LoginButton>
+          <LoginButton style={{ ...group.subGroup }}>로그인</LoginButton>
         </CustomLink>
-        <RegisterButton style={{ ...mainGroup }}>회원가입</RegisterButton>
+        <RegisterButton style={{ ...group.subGroup }}>회원가입</RegisterButton>
       </FormBox>
     </LoginBlock>
   );

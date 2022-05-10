@@ -1,33 +1,33 @@
 /* eslint-disable no-unused-vars */
-import { useRecoilState } from 'recoil';
-import { mainBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../recoil';
 import { surveyApi } from '../api/api-base';
 
-// eslint-disable-next-line import/prefer-default-export
-export async function changeColor(pageId) {
-  const [mainBackGroup, setMainBackGroup] = useRecoilState(mainBackGroupState);
-  const [mainGroup, setMainGroup] = useRecoilState(mainGroupState);
-  const [subGroup, setSubGroup] = useRecoilState(subGroupState);
-  const [pointGroup, setPointGroup] = useRecoilState(pointGroupState);
+function rgb(values) {
+  return `rgb(${values.join(', ')})`;
+}
 
+// eslint-disable-next-line import/prefer-default-export
+export async function changeColor(pageId, setGroup) {
   let res;
   try {
-    res = await surveyApi.getColors(pageId);
+    res = await surveyApi.getRandomColor(pageId);
   } catch (e) {
-    console.log('error');
+    console.log(e);
   } finally {
     if (res) {
-      setMainBackGroup({
-        backgroundColor: res.data.mainBackGroup,
-      });
-      setMainGroup({
-        backgroundColor: res.data.mainGroup,
-      });
-      setSubGroup({
-        backgroundColor: res.data.subGroup,
-      });
-      setPointGroup({
-        backgroundColor: res.data.point,
+      setGroup({
+        mainBackGroup: {
+          backgroundColor: rgb(res.data.mainBackGroup),
+        },
+        mainGroup: {
+          backgroundColor: rgb(res.data.mainGroup),
+        },
+        subGroup: {
+          backgroundColor: rgb(res.data.subGroup),
+        },
+        pointGroup: {
+          backgroundColor: rgb(res.data.pointGroup),
+        },
+        groupId,
       });
     }
   }

@@ -1,21 +1,15 @@
 // recoil 페이지
 import { atom } from 'recoil';
 
-export const mainBackGroupState = atom({
-  key: 'mainBackGroup',
-  default: { color: '', backgroundColor: '', font: '' },
-});
-export const mainGroupState = atom({
-  key: 'mainGroup',
-  default: { color: '', backgroundColor: '', font: '' },
-});
-export const subGroupState = atom({
-  key: 'subGroup',
-  default: { color: '', backgroundColor: '', font: '' },
-});
-export const pointGroupState = atom({
-  key: 'pointGroup',
-  default: { color: '', backgroundColor: '', font: '' },
+export const CRgroupState = atom({
+  key: 'CRgroupState',
+  default: {
+    mainBackGroup: { color: '', backgroundColor: '', font: '' },
+    mainGroup: { color: '', backgroundColor: '', font: '' },
+    subGroup: { color: '', backgroundColor: '', font: '' },
+    pointGroup: { color: '', backgroundColor: '', font: '' },
+    groupId: '',
+  },
 });
 
 // for survey

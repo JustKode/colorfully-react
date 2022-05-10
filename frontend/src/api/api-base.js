@@ -10,6 +10,6 @@ export const baseApi = Axios.create({
 });
 
 export const surveyApi = {
-  getRandomColor: (pageId) => baseApi.get(`/data/${pageId}`),
-  postSurvey: (pageId, data) => baseApi.post(`/data/${pageId}`, data),
+  getRandomColor: (pageId) => baseApi.get(`data/${pageId}`),
+  postSurvey: (pageId, data) => baseApi.post(`data/${pageId}`, data),
 };
