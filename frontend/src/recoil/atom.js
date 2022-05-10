@@ -20,7 +20,7 @@ export const pointGroupState = atom({
 
 // for survey
 export const surveyDialogState = atom({
-  key: 'open',
+  key: 'surveyOpen',
   default: false,
 });
 
@@ -41,25 +41,12 @@ export const surveyRatingState = atom({
   },
 });
 
-// for survey
-export const resultDialogState = atom({
-  key: 'open',
+export const drawerState = atom({
+  key: 'drawer',
   default: false,
 });
 
-// for emotion rating
-//  min -50 ~ 50 max
-export const resultRatingState = atom({
-  key: 'emotionResulting',
-  default: {
-    warm_cool: 0,
-    heavy_light: 0,
-    modern_classical: 0,
-    clean_dirty: 0,
-    activate_passive: 0,
-    hard_soft: 0,
-    tense_relaxed: 0,
-    fresh_stale: 0,
-    masculine_feminine: 0,
-  },
+export const wishEmotionState = atom({
+  key: 'emotion',
+  default: '',
 });
