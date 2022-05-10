@@ -6,10 +6,10 @@ function rgb(values) {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export async function changeColor(pageId, setGroup) {
+export async function changeColor(groupId, setGroup) {
   let res;
   try {
-    res = await surveyApi.getRandomColor(pageId);
+    res = await surveyApi.getRandomColor(groupId);
   } catch (e) {
     console.log(e);
   } finally {

@@ -76,7 +76,7 @@ function MainComponent() {
   const [group] = useRecoilState(CRgroupState);
   return (
     <MainBlock style={{ ...group.mainBackGroup }}>
-      <Header>
+      <Header style={{ ...group.subGroup }}>
         <span className="header-menu" style={{ ...group.subGroup }}>
           ABOUT
         </span>
@@ -88,9 +88,9 @@ function MainComponent() {
         </span>
       </Header>
       <ColorBlock>
-        <FirstColor style={{ ...group.subGroup }} />
+        <FirstColor style={{ ...group.mainGroup }} />
         <SecondColor style={{ ...group.mainGroup }} />
-        <ThirdColor style={{ ...group.subGroup }} />
+        <ThirdColor style={{ ...group.mainGroup }} />
         <FourthColor style={{ ...group.mainGroup }} />
       </ColorBlock>
       <FormBox>
@@ -100,7 +100,7 @@ function MainComponent() {
         <div className="content" style={{ ...group.mainGroup }}>
           점점 만들기 귀찮아지는... 너무 대충 만들었니 미안하다
         </div>
-        <div className="content" style={{ ...group.subGroup }}>
+        <div className="content" style={{ ...group.mainGroup }}>
           색상 많이 적용해보라고 여러 개 넣어봤어
         </div>
       </FormBox>
