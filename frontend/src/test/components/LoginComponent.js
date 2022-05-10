@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import BasicStyled from 'styled-components';
 import { Button, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
+import { mainBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
 
 const LoginBlock = BasicStyled.div`
   position: absolute;
@@ -77,14 +77,13 @@ const RegisterButton = styled(StyledButton)`
 
 function LoginComponent() {
   const [mainBackGroup] = useRecoilState(mainBackGroupState);
-  const [subBackGroup] = useRecoilState(subBackGroupState);
   const [mainGroup] = useRecoilState(mainGroupState);
   const [subGroup] = useRecoilState(subGroupState);
   const [pointGroup] = useRecoilState(pointGroupState);
 
   return (
     <LoginBlock style={{ ...mainBackGroup }}>
-      <FormBox style={{ ...subBackGroup }}>
+      <FormBox style={{ ...mainBackGroup }}>
         <div className="login-title">테스트 화면</div>
         <form>
           <StyledTextfield fullWidth margin="dense" id="username" label="username" variant="filled" />

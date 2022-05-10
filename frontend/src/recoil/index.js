@@ -1,3 +1,3 @@
-import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from './atom';
+import { mainBackGroupState, mainGroupState, subGroupState, pointGroupState } from './atom';
 
-export { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState };
+export { mainBackGroupState, mainGroupState, subGroupState, pointGroupState };

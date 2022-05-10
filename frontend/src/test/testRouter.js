@@ -4,42 +4,12 @@ import { Route, Routes } from 'react-router-dom';
 import BasicLayout from '../common/layout/BasicLayout';
 import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
-import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../recoil';
-
+import { changeColor } from '../util/colorChange';
 export default function TestRouter() {
-  const [mainBackGroup, setMainBackGroup] = useRecoilState(mainBackGroupState);
-  const [subBackGroup, setSubBackGroup] = useRecoilState(subBackGroupState);
-  const [mainGroup, setMainGroup] = useRecoilState(mainGroupState);
-  const [subGroup, setSubGroup] = useRecoilState(subGroupState);
-  const [pointGroup, setPointGroup] = useRecoilState(pointGroupState);
+  const pageId = '페이지 아이디 넣으세요!';
   useEffect(() => {
-    setMainBackGroup({
-      color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      font: 'sans-serif',
-    });
-    setSubBackGroup({
-      color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      font: 'sans-serif',
-    });
-    setMainGroup({
-      color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      font: 'sans-serif',
-    });
-    setSubGroup({
-      color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      font: 'sans-serif',
-    });
-    setPointGroup({
-      color: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      backgroundColor: '#' + ((Math.random() * 0xffffff) << 0).toString(16),
-      font: 'sans-serif',
-    });
+    changeColor(pageId);
   }, []);
-
   return (
     <Routes>
       <Route element={<BasicLayout />}>

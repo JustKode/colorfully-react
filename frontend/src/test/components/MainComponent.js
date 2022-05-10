@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
+import { mainBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
 
 const MainBlock = styled.div`
   position: absolute;
