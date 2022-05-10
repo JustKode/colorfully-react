@@ -1,30 +1,20 @@
 // recoil 페이지
 import { atom } from 'recoil';
 
-export const mainBackGroupState = atom({
-  key: 'mainBackGroup',
-  default: { color: '', backgroundColor: '', font: '' },
-});
-export const subBackGroupState = atom({
-  key: 'subBackGroup',
-  default: { color: '', backgroundColor: '', font: '' },
-});
-export const mainGroupState = atom({
-  key: 'mainGroup',
-  default: { color: '', backgroundColor: '', font: '' },
-});
-export const subGroupState = atom({
-  key: 'subGroup',
-  default: { color: '', backgroundColor: '', font: '' },
-});
-export const pointGroupState = atom({
-  key: 'pointGroup',
-  default: { color: '', backgroundColor: '', font: '' },
+export const CRgroupState = atom({
+  key: 'CRgroupState',
+  default: {
+    mainBackGroup: { color: '', backgroundColor: '', font: '' },
+    mainGroup: { color: '', backgroundColor: '', font: '' },
+    subGroup: { color: '', backgroundColor: '', font: '' },
+    pointGroup: { color: '', backgroundColor: '', font: '' },
+    groupId: '',
+  },
 });
 
 // for survey
 export const surveyDialogState = atom({
-  key: 'open',
+  key: 'surveyOpen',
   default: false,
 });
 
@@ -43,4 +33,14 @@ export const surveyRatingState = atom({
     fresh_stale: 0,
     masculine_feminine: 0,
   },
+});
+
+export const drawerState = atom({
+  key: 'drawer',
+  default: false,
+});
+
+export const wishEmotionState = atom({
+  key: 'emotion',
+  default: '',
 });

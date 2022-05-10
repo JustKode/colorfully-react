@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
+import CRgroupState from '../../recoil';
 
 const MainBlock = styled.div`
   position: absolute;
@@ -73,38 +73,34 @@ const FormBox = styled.div`
 `;
 
 function MainComponent() {
-  const [mainBackGroup] = useRecoilState(mainBackGroupState);
-  const [subBackGroup] = useRecoilState(subBackGroupState);
-  const [mainGroup] = useRecoilState(mainGroupState);
-  const [subGroup] = useRecoilState(subGroupState);
-  const [pointGroup] = useRecoilState(pointGroupState);
+  const [group] = useRecoilState(CRgroupState);
   return (
-    <MainBlock style={{ ...mainBackGroup }}>
+    <MainBlock style={{ ...group.mainBackGroup }}>
       <Header>
-        <span className="header-menu" style={{ ...subBackGroup }}>
+        <span className="header-menu" style={{ ...group.subGroup }}>
           ABOUT
         </span>
-        <span className="header-menu" style={{ ...subBackGroup }}>
+        <span className="header-menu" style={{ ...group.subGroup }}>
           TEST
         </span>
-        <span className="header-menu" style={{ ...subBackGroup }}>
+        <span className="header-menu" style={{ ...group.subGroup }}>
           INFO
         </span>
       </Header>
       <ColorBlock>
-        <FirstColor style={{ ...subBackGroup }} />
-        <SecondColor style={{ ...subBackGroup }} />
-        <ThirdColor style={{ ...subBackGroup }} />
-        <FourthColor style={{ ...subBackGroup }} />
+        <FirstColor style={{ ...group.subGroup }} />
+        <SecondColor style={{ ...group.mainGroup }} />
+        <ThirdColor style={{ ...group.subGroup }} />
+        <FourthColor style={{ ...group.mainGroup }} />
       </ColorBlock>
       <FormBox>
-        <div className="title" style={{ ...mainGroup }}>
+        <div className="title" style={{ ...group.mainGroup }}>
           안녕하세요?
         </div>
-        <div className="content" style={{ ...mainGroup }}>
+        <div className="content" style={{ ...group.mainGroup }}>
           점점 만들기 귀찮아지는... 너무 대충 만들었니 미안하다
         </div>
-        <div className="content" style={{ ...subGroup }}>
+        <div className="content" style={{ ...group.subGroup }}>
           색상 많이 적용해보라고 여러 개 넣어봤어
         </div>
       </FormBox>

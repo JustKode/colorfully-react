@@ -1,3 +1,3 @@
-import { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState } from './atom';
+import { CRgroupState } from './atom';
 
-export { mainBackGroupState, subBackGroupState, mainGroupState, subGroupState, pointGroupState };
+export default CRgroupState;
