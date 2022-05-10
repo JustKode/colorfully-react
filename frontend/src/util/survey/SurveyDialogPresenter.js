@@ -70,7 +70,15 @@ export default function SurveyDialogPresenter(Props) {
       <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
         설문 조사
       </BootstrapDialogTitle>
-      <DialogContent dividers sx={{ '&::-webkit-scrollbar': { display: 'none' } }}>
+      <DialogContent
+        dividers
+        sx={{ '&::-webkit-scrollbar': { display: 'none' } }}
+        // sx={{
+        //   '&.MuiDialogContent-root': {
+        //     backgroundColor: '#d1d4d6',
+        //   },
+        // }}
+      >
         {emotions.map((item, index) => (
           <EmotionRatiog
             // eslint-disable-next-line react/no-array-index-key

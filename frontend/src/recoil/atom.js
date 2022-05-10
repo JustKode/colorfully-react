@@ -63,9 +63,3 @@ export const resultRatingState = atom({
     masculine_feminine: 0,
   },
 });
-
-// survey mode / test mode toggle
-export const modeToggleState = atom({
-  key: 'mode',
-  default: 'survey',
-});

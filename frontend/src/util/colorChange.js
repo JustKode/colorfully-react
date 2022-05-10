@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
+import { useRecoilState } from 'recoil';
 import { mainBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../recoil';
-import { surveyApi } from './../api/api-base';
+import { surveyApi } from '../api/api-base';
 
+// eslint-disable-next-line import/prefer-default-export
 export async function changeColor(pageId) {
   const [mainBackGroup, setMainBackGroup] = useRecoilState(mainBackGroupState);
   const [mainGroup, setMainGroup] = useRecoilState(mainGroupState);
