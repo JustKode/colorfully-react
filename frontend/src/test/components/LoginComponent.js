@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { mainBackGroupState, mainGroupState, subGroupState, pointGroupState } from '../../recoil';
+import CRgroupState from '../../recoil';
 
 const LoginBlock = styled.div`
   position: absolute;
@@ -70,23 +70,22 @@ const RegisterButton = styled(Button)`
 `;
 
 function LoginComponent() {
-  const [mainBackGroup] = useRecoilState(mainBackGroupState);
-  const [mainGroup] = useRecoilState(mainGroupState);
-  const [subGroup] = useRecoilState(subGroupState);
-  const [pointGroup] = useRecoilState(pointGroupState);
+  const [group] = useRecoilState(CRgroupState);
 
   return (
-    <LoginBlock style={{ ...mainBackGroup }}>
-      <FormBox style={{ ...mainBackGroup }}>
-        <div className="login-title">테스트 화면</div>
+    <LoginBlock style={{ ...group.mainBackGroup }}>
+      <FormBox style={{ ...group.mainBackGroup }}>
+        <div className="login-title" style={{ ...group.mainGroup }}>
+          테스트 화면
+        </div>
         <form>
           <StyledInput name="email" placeholder="이메일을 입력하세요" />
           <StyledInput name="password" placeholder="비밀번호를 입력하세요" />
         </form>
         <CustomLink to="/test/main">
-          <LoginButton style={{ ...mainGroup }}>로그인</LoginButton>
+          <LoginButton style={{ ...group.subGroup }}>로그인</LoginButton>
         </CustomLink>
-        <RegisterButton style={{ ...mainGroup }}>회원가입</RegisterButton>
+        <RegisterButton style={{ ...group.subGroup }}>회원가입</RegisterButton>
       </FormBox>
     </LoginBlock>
   );

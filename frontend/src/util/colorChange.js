@@ -6,28 +6,28 @@ function rgb(values) {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export async function changeColor(pageId, setMainBackGroup, setMainGroup, setSubGroup, setPointGroup) {
+export async function changeColor(pageId, setGroup) {
   let res;
   try {
     res = await surveyApi.getRandomColor(pageId);
-    console.log(res);
-    console.log('asd');
   } catch (e) {
-    console.log('error');
+    console.log(e);
   } finally {
     if (res) {
-      console.log(rgb(res.data.mainBackGroup));
-      setMainBackGroup({
-        backgroundColor: rgb(res.data.mainBackGroup),
-      });
-      setMainGroup({
-        backgroundColor: rgb(res.data.mainGroup),
-      });
-      setSubGroup({
-        backgroundColor: rgb(res.data.subGroup),
-      });
-      setPointGroup({
-        backgroundColor: rgb(res.data.point),
+      setGroup({
+        mainBackGroup: {
+          backgroundColor: rgb(res.data.mainBackGroup),
+        },
+        mainGroup: {
+          backgroundColor: rgb(res.data.mainGroup),
+        },
+        subGroup: {
+          backgroundColor: rgb(res.data.subGroup),
+        },
+        pointGroup: {
+          backgroundColor: rgb(res.data.pointGroup),
+        },
+        groupId,
       });
     }
   }
