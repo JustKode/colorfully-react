@@ -14,10 +14,10 @@ Data = Namespace(
 )
 
 color_data_fields = Data.model('Random Color Data', {
-    "mainBackGroup": fields.String(description="배경색", example="#123456"),
-    "mainGroup": fields.String(description="메인색", example="#123456"),
-    "subGroup": fields.String(description="보조색", example="#123456"),
-    "point": fields.String(description="강조색", example="#123456")
+    "mainBackGroup": fields.List(fields.Integer, description="배경색 RGB", example=[123, 123, 123]),
+    "mainGroup": fields.List(fields.Integer, description="메인색 RGB", example=[123, 123, 123]),
+    "subGroup": fields.List(fields.Integer, description="보조색 RGB", example=[123, 123, 123]),
+    "point": fields.List(fields.Integer, description="강조색 RGB", example=[123, 123, 123])
 })
 
 input_data = {key: fields.Float(description="-1.0 ~ 1.0의 유저 응답 점수 입력", example=0.0) for key in enum_util.get_adjective_pairs()}
