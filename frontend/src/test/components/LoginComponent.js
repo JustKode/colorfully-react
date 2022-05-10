@@ -3,8 +3,11 @@ import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import CRgroupState from '../../recoil';
+import BasicStyled from 'styled-components';
+import { Button, TextField } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const LoginBlock = styled.div`
+const LoginBlock = BasicStyled.div`
   position: absolute;
   left: 0;
   top: 0;
@@ -18,7 +21,7 @@ const LoginBlock = styled.div`
   align-items: center;
 `;
 
-const FormBox = styled.div`
+const FormBox = BasicStyled.div`
   padding: 2.5rem;
   width: 25rem;
   background-color: white;
@@ -32,7 +35,7 @@ const FormBox = styled.div`
   }
 `;
 
-const StyledInput = styled.input`
+const StyledInput = BasicStyled.input`
   font-size: 1rem;
   border: none;
   border-bottom: 1px solid #8b8b8b;
@@ -44,28 +47,32 @@ const StyledInput = styled.input`
   }
 `;
 
+const StyledTextfield = styled(TextField)`
+  background-color: #ffffff;
+  margin-bottom: 0.5rem;
+`;
+
 const CustomLink = styled(Link)`
   text-decoration: none;
 `;
 
-const Button = styled.div`
+const StyledButton = styled(Button)`
   width: 100%;
-  height: 2.5rem;
+  height: 3rem;
   border-radius: 0.5rem;
-  color: white;
+  color: #ffffff;
   text-align: center;
   font-size: 1rem;
-  margin-top: 1.5rem;
   line-height: 2.5rem;
+  margin-top: 0.5rem;
   cursor: pointer;
 `;
 
-const LoginButton = styled(Button)`
+const LoginButton = styled(StyledButton)`
   background-color: rgb(245, 227, 212);
 `;
 
-const RegisterButton = styled(Button)`
-  margin-top: 0.5rem;
+const RegisterButton = styled(StyledButton)`
   background-color: rgb(210, 221, 222);
 `;
 
@@ -79,8 +86,8 @@ function LoginComponent() {
           테스트 화면
         </div>
         <form>
-          <StyledInput name="email" placeholder="이메일을 입력하세요" />
-          <StyledInput name="password" placeholder="비밀번호를 입력하세요" />
+          <StyledTextfield fullWidth margin="dense" id="username" label="username" variant="filled" />
+          <StyledTextfield fullWidth margin="dense" id="email" label="email" variant="filled" />
         </form>
         <CustomLink to="/test/main">
           <LoginButton style={{ ...group.subGroup }}>로그인</LoginButton>
