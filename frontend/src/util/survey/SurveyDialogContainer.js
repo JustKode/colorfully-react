@@ -25,8 +25,10 @@ export default function SurveyDialogContainer() {
       [targetEmotion]: value,
     });
   };
-
-  const handleClose = async () => {
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleSubmit = async () => {
     let res;
     try {
       const colorData = {
@@ -56,6 +58,12 @@ export default function SurveyDialogContainer() {
     }
   };
   return (
-    <SurveyDialogPresenter open={open} handleClose={handleClose} emotionRating={emotionRating} onRating={onRating} />
+    <SurveyDialogPresenter
+      open={open}
+      handleClose={handleClose}
+      emotionRating={emotionRating}
+      onRating={onRating}
+      handleSubmit={handleSubmit}
+    />
   );
 }

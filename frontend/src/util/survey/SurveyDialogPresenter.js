@@ -64,7 +64,7 @@ const emotions = [
 ];
 
 export default function SurveyDialogPresenter(Props) {
-  const { open, handleClose, onRating } = Props;
+  const { open, handleClose, onRating, handleSubmit } = Props;
   return (
     <BootstrapDialog onClose={handleClose} open={open} maxWidth="sm">
       <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
@@ -92,7 +92,7 @@ export default function SurveyDialogPresenter(Props) {
         ))}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>제출하기</Button>
+        <Button onClick={handleSubmit}>제출하기</Button>
       </DialogActions>
     </BootstrapDialog>
   );
