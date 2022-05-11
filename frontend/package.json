@@ -13,12 +13,14 @@
     "axios": "^0.27.2",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
+    "react-awesome-reveal": "^3.8.1",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "recoil": "^0.7.2",
     "styled-components": "^5.3.5",
     "tsc": "^2.0.4",
+    "typewriter-effect": "^2.18.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
