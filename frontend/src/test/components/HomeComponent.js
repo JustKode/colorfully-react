@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { Grid, Button, Card, CardActionArea, CardContent, CardMedia, Container, Typography } from '@mui/material';
 import { Fade } from 'react-awesome-reveal';
 import Typewriter from 'typewriter-effect';
 import logo from '../../assets/img/sample-logo.png';
 import img from '../../assets/img/sample-logo.png';
+import { useRecoilState } from 'recoil';
+import CRgroupState from '../../recoil';
 
 export const StyledFlexColumnMainDiv = styled('div')`
   display: flex;
@@ -20,7 +22,7 @@ export const StyledMainOuterDiv = styled('div')`
   &::before {
     content: '';
     width: 100%;
-    background: linear-gradient(to right, blue, pink);
+    background: linear-gradient(to right, ${(props) => props.first}, ${(props) => props.second});
     background-size: cover;
     height: 80vh;
     opacity: 0.4;
@@ -157,9 +159,15 @@ export function RightPerson() {
 }
 export default function HomePresenter(Props) {
   const { goSignIn, goDashboard } = Props;
+  const [group] = useRecoilState(CRgroupState);
+
+  useEffect(() => {
+    console.log(group.mainGroup.backgroundColor, group.pointGroup.backgroundColor);
+  }, [group]);
+
   return (
     <StyledFlexColumnMainDiv>
-      <StyledMainOuterDiv>
+      <StyledMainOuterDiv first={group.mainGroup.backgroundColor} second={group.subGroup.backgroundColor}>
         <StyledMainContainer>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '4rem' }}>
             <img src={logo} alt="main logo" style={{ width: '7rem', objectFit: 'contain', paddingRight: '1rem' }} />
@@ -202,6 +210,7 @@ export default function HomePresenter(Props) {
               padding: '1rem',
               paddingBottom: '2rem',
               marginBottom: '2rem',
+              ...group.subGroup,
             }}
           >
             <div style={{ position: 'absolute', left: '10rem', bottom: '-13rem' }}>
@@ -222,6 +231,7 @@ export default function HomePresenter(Props) {
               padding: '1rem',
               paddingBottom: '2rem',
               marginBottom: '2rem',
+              ...group.mainGroup,
             }}
           >
             <div style={{ position: 'absolute', right: '10rem', bottom: '-25rem' }}>
@@ -255,6 +265,7 @@ export default function HomePresenter(Props) {
               backgroundColor: '#bdbef4',
               padding: '1rem',
               marginBottom: '2rem',
+              ...group.mainGroup,
             }}
           >
             <Typography align="center" whiteSpace="pre-line">
@@ -270,6 +281,7 @@ export default function HomePresenter(Props) {
               backgroundColor: '#d6c5f0',
               padding: '1rem',
               marginBottom: '2rem',
+              ...group.pointGroup,
             }}
           >
             <Typography align="center" whiteSpace="pre-line">
@@ -285,6 +297,7 @@ export default function HomePresenter(Props) {
               backgroundColor: '#efcde0',
               padding: '1rem',
               marginBottom: '2rem',
+              ...group.subGroup,
             }}
           >
             <Typography align="center" whiteSpace="pre-line">
