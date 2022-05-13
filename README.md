@@ -54,5 +54,11 @@
 
 <br><br>
 
+# 💎 적용예시
+
+
+  <p align="center"><img src="https://user-images.githubusercontent.com/32060716/168219649-a20c1b56-5a31-41ca-8cc4-d370839ec808.gif" alt="animated" /></p>
+
+
 # ✨ 기대효과
 프레임워크를  통해 프론트엔드 개발자는 <strong>🎉자신이 원하는 감성을 주는 웹 UI을 보다 적은 비용으로  효율적으로 개발</strong>할 수 있을 것으로 예상된다. 웹 사용자는 더 나은 UI를 제공받음으로써 UX가 향상될 것으로 기대된다.
