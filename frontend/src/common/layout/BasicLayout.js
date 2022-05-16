@@ -104,7 +104,7 @@ export default function BasicLayout() {
         <Drawer anchor="right" open={drawer} onClose={toggleDrawer(false)}>
           {list()}
         </Drawer>
-        <Box sx={{ height: 320 }}>
+        <Box sx={{ height: 0 }}>
           <SpeedDial
             ariaLabel="SpeedDial basic example"
             sx={{ position: 'fixed', bottom: 30, right: 30 }}

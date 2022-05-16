@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import { Route, Routes } from 'react-router-dom';
+import PhotoContextProvider from './context/PhotoContext';
+import { Route, Routes, Navigate, useParams, useNavigate } from 'react-router-dom';
+import Header from './components/Header';
+import Item from './components/Item';
+import Search from './components/Search';
+import NotFound from './components/NotFound';
 import BasicLayout from '../common/layout/BasicLayout';
-import LoginPage from './pages/LoginPage';
-import MainPage from './pages/MainPage';
+import './index.css';
+
+/* ************************************* */
+import { useRecoilState } from 'recoil';
 import { changeColor } from '../util/colorChange';
 import { CRgroupState } from '../recoil/atom';
+/* ************************************* */
 
 export default function TestRouter() {
-  // 페이지별로 변경하고 싶다면 그룹을 ../../backend/group_adjective.json 에 추가하고,
-  // 그룹이 변경되는 페이지에 아래 넣어주기
-  // 전체를 하나의 그룹으로 보고싶다면 그냥 group 하나만 지정해주고 하면 됨.
-  // 나중에 말 정리해서 설명 넣기
   /* ************************************* */
   const groupId = 'GROUP_1';
   const [group, setGroup] = useRecoilState(CRgroupState);
@@ -19,12 +22,32 @@ export default function TestRouter() {
     changeColor(groupId, setGroup);
   }, []);
   /* ************************************* */
+
+  const { searchInput } = useParams();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e, searchInput) => {
+    e.preventDefault();
+    e.currentTarget.reset();
+    let url = `/search/${searchInput}`;
+    navigate(url);
+  };
+
   return (
-    <Routes>
-      <Route element={<BasicLayout />}>
-        <Route path="/test" element={<LoginPage />} />
-        <Route path="/test/main" element={<MainPage />} />
-      </Route>
-    </Routes>
+    <PhotoContextProvider>
+      <div className="container">
+        <Header handleSubmit={handleSubmit} />
+        <BasicLayout />
+        <Routes>
+          <Route path="/" element={<Navigate to="/mountain" />} />
+          <Route path="/mountain" element={<Item searchTerm="mountain" />} />
+          <Route path="/beach" element={<Item searchTerm="beach" />} />
+          <Route path="/bird" element={<Item searchTerm="bird" />} />
+          <Route path="/food" element={<Item searchTerm="food" />} />
+          <Route path="/search/:searchInput" element={<Search searchTerm={searchInput} />} />
+          <Route component={NotFound} />
+        </Routes>
+      </div>
+    </PhotoContextProvider>
   );
 }
