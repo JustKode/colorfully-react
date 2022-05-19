@@ -174,7 +174,7 @@ export default function HomePresenter(Props) {
             <StyledMainTitleTypography variant="h3" align="left" color="#292929">
               <Typewriter
                 onInit={(typewriter) => {
-                  typewriter.typeString('Intelligent Energy\nManagement Platform').pauseFor(500).start();
+                  typewriter.typeString('Capstone Design\nColorfully Team ✨').pauseFor(500).start();
                 }}
               />
             </StyledMainTitleTypography>
