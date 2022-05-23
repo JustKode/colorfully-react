@@ -26,7 +26,7 @@ services:
     env_file: "./.env"
     build: ./frontend
     working_dir: /frontend
-    command: bash -c "yarn install && yarn build && yarn global add serve && serve -s build"
+    command: bash -c "yarn install && yarn build --production && yarn global add serve && serve -s build"
     volumes:
       - ./frontend:/frontend
     ports:
