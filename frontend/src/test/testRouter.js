@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import BasicLayout from '../common/layout/BasicLayout';
 import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
+import HomePage from './pages/HomePage';
 import { changeColor } from '../util/colorChange';
 import { CRgroupState } from '../recoil/atom';
 
@@ -23,6 +24,7 @@ export default function TestRouter() {
     <Routes>
       <Route element={<BasicLayout />}>
         <Route path="/test" element={<LoginPage />} />
+        <Route path="/test/home" element={<HomePage />} />
         <Route path="/test/main" element={<MainPage />} />
       </Route>
     </Routes>

@@ -22,3 +22,7 @@ def post_data(json):
     db = connection.get_default_database()
     db.get_collection('train_data').insert_one(json)
     return
+
+def get_data(group):
+    db = connection.get_default_database()
+    return list(db.get_collection('train_data').find({"group": group}))
