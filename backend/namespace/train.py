@@ -3,7 +3,8 @@ from flask_restx import Resource, Namespace, fields
 from json import loads
 from requests import post
 from .data import color_data_fields
-from util.mongo import get_schema, post_data
+from util.mongo import get_schema, post_data, get_data
+from util.train import train_data
 from util.enum import EnumUtil
 
 enum_util = EnumUtil()
@@ -28,9 +29,4 @@ class TrainPage(Resource):
         if group_id not in groups:
             return {"message": "group not found"}, 404
         else:
-            return {key: [{
-                        "mainBackGroup": [123, 123, 123],
-                        "mainGroup": [123, 123, 123],
-                        "subGroup": [123, 123, 123],
-                        "pointGroup": [123, 123, 123]
-                    } for _ in range(3)] for key in enum_util.get_adjectives()}
+            return train_data(get_data(group_id)), 200
