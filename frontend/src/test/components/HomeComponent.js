@@ -161,10 +161,6 @@ export default function HomePresenter(Props) {
   const { goSignIn, goDashboard } = Props;
   const [group] = useRecoilState(CRgroupState);
 
-  useEffect(() => {
-    console.log(group.mainGroup.backgroundColor, group.pointGroup.backgroundColor);
-  }, [group]);
-
   return (
     <StyledFlexColumnMainDiv>
       <StyledMainOuterDiv first={group.mainGroup.backgroundColor} second={group.subGroup.backgroundColor}>

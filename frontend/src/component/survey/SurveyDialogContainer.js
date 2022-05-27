@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRecoilState } from 'recoil';
 import SurveyDialogPresenter from './SurveyDialogPresenter';
 import { surveyDialogState, surveyRatingState, CRgroupState } from '../../recoil/atom';
@@ -14,9 +14,9 @@ export default function SurveyDialogContainer() {
   const [emotionRating, setEmotionRating] = useRecoilState(surveyRatingState);
   const [CRgroup] = useRecoilState(CRgroupState);
 
-  useEffect(() => {
-    console.log(emotionRating);
-  }, [emotionRating]);
+  // useEffect(() => {
+  //   console.log(emotionRating);
+  // }, [emotionRating]);
 
   // eslint-disable-next-line no-unused-vars
   const onRating = (value, targetEmotion) => {
