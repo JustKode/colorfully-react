@@ -50,7 +50,6 @@ function ColorDropbox(Props) {
         minWidth: '10rem',
       }}
     >
-      <p>{selectColor}</p>
       <FormControl fullWidth>
         <InputLabel>Color</InputLabel>
         <Select value={selectColor} onChange={handleChange} disabled={disabled}>
