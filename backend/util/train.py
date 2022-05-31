@@ -2,12 +2,19 @@ import numpy as np
 from sklearn.cluster import MeanShift, estimate_bandwidth
 from util.enum import EnumUtil
 
+class DataException(Exception):
+    pass
+
 enum_util = EnumUtil()
 
 def clustering(X):
     best_bandwidth = estimate_bandwidth(X)
 
+    if best_bandwidth == 0.0:
+        raise DataException("학습 하기에 데이터가 너무 작습니다. 더 많은 데이터가 필요합니다.")
+
     meanshift = MeanShift(bandwidth=best_bandwidth)
+
     cluster_labels = meanshift.fit_predict(X)
     labels = np.unique(cluster_labels, return_counts=True)[1].argsort()[-3:][::-1]
     
@@ -25,6 +32,9 @@ def clustering(X):
 
 def train_data(data):
     list_var = []
+
+    if len(data) == 0:
+        raise DataException("학습 데이터가 존재하지 않습니다.")
 
     for doc in data:
         vector = []
