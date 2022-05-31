@@ -4,7 +4,7 @@ from json import loads
 from requests import post
 from .data import color_data_fields
 from util.mongo import get_schema, post_data, get_data
-from util.train import train_data
+from util.train import train_data, DataException
 from util.enum import EnumUtil
 
 enum_util = EnumUtil()
@@ -29,4 +29,7 @@ class TrainPage(Resource):
         if group_id not in groups:
             return {"message": "group not found"}, 404
         else:
-            return train_data(get_data(group_id)), 200
+            try:
+                return train_data(get_data(group_id)), 200
+            except DataException as e:
+                return {"message": str(e)}, 400
