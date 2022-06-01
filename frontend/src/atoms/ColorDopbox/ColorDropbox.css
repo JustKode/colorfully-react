@@ -1,0 +1,16 @@
+/* .MuiFormControl-root {
+  background-color: black;
+} */
+
+/* .MuiSelect-select {
+  background-color: black;
+} */
+
+/* .MuiOutlinedInput-root {
+  background-color: black;
+} */
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+  display: flex;
+  flex-direction: row;
+}

@@ -13,3 +13,5 @@ export const surveyApi = {
   getRandomColor: (pageId) => baseApi.get(`data/${pageId}`),
   postSurvey: (pageId, data) => baseApi.post(`data/${pageId}`, data),
 };
+
+export const studyAPI = (pageId) => baseApi.get(`train/${pageId}`);

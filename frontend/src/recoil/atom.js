@@ -44,3 +44,8 @@ export const wishEmotionState = atom({
   key: 'emotion',
   default: '',
 });
+
+export const selectedColorState = atom({
+  key: 'selectedColor',
+  default: [],
+});
