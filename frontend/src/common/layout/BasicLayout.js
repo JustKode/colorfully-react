@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Box, Button, SpeedDial, SpeedDialAction, Typography } from '@mui/material';
@@ -15,6 +16,7 @@ import TCRgroupState from '../../recoil/trainedState';
 import EmotionBox from '../../component/EmotionBox/EmotionBox';
 import selectEmotionState, { selectEmotionCountState } from '../../recoil/selectState';
 import colorVector from '../../util/colorVector';
+import { studyAPI } from '../../api/api-base';
 
 export default function BasicLayout() {
   // survey dialog state
@@ -25,7 +27,7 @@ export default function BasicLayout() {
   const [count, setCount] = useRecoilState(selectEmotionCountState);
   const [generateRotate, setGenerateRotate] = useState(false);
   const [group, setGroup] = useRecoilState(CRgroupState);
-  const [TGroup] = useRecoilState(TCRgroupState);
+  const [TGroup, setTGroup] = useRecoilState(TCRgroupState);
   const keys = Object.keys(TGroup);
   const emotionKeys = Object.keys(emotionState);
 
@@ -47,6 +49,30 @@ export default function BasicLayout() {
         }),
     );
   }, [emotionState]);
+
+  const onStudyClick = async () => {
+    const res = await studyAPI(group.groupId);
+    // eslint-disable-next-line prefer-const
+    let studyData = res.data;
+    const emoKeys = Object.keys(studyData);
+
+    const funcAAA = async () => {
+      emoKeys.map((emotion) => {
+        studyData[emotion].map((_, index) => {
+          studyData[emotion][index] = {
+            mainBackGroup: `rgb(${studyData[emotion][index].mainBackGroup[0]}, ${studyData[emotion][index].mainBackGroup[1]}, ${studyData[emotion][index].mainBackGroup[2]})`,
+            mainGroup: `rgb(${studyData[emotion][index].mainGroup[0]}, ${studyData[emotion][index].mainGroup[1]}, ${studyData[emotion][index].mainGroup[2]})`,
+            pointGroup: `rgb(${studyData[emotion][index].pointGroup[0]}, ${studyData[emotion][index].pointGroup[1]}, ${studyData[emotion][index].pointGroup[2]})`,
+            subGroup: `rgb(${studyData[emotion][index].subGroup[0]}, ${studyData[emotion][index].subGroup[1]}, ${studyData[emotion][index].subGroup[2]})`,
+          };
+        });
+      });
+    };
+
+    await funcAAA();
+
+    setTGroup(studyData);
+  };
 
   const onApplyClick = async () => {
     let colorData;
@@ -119,7 +145,7 @@ export default function BasicLayout() {
       icon: <SchoolIcon />,
       name: 'Study',
       action: () => {
-        // setGenerateRotate(!generateRotate);
+        onStudyClick();
       },
     },
   ];
