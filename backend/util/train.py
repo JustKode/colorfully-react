@@ -54,14 +54,16 @@ def train_data(data):
             for _ in range(-doc[key_pair] // 2):
                 X.append(doc['inputData'])
 
-        result[negative] = clustering(X)
+        if len(X) != 0:
+            result[negative] = clustering(X)
 
         # positive
         X = []
         for doc in list_var:
             for _ in range(doc[key_pair] // 2):
                 X.append(doc['inputData'])
-
-        result[positive] = clustering(X)
+        
+        if len(X) != 0:
+            result[positive] = clustering(X)
     
     return result
